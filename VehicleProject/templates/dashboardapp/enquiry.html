@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>buy car</title>
+{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center";>Buy Car Form</h2>
+<div class="container" style="width:50%">
+    <form method="post" class="jumbotron">
+        {% csrf_token %}
+        {{form|crispy}}
+        <a class="btn btn-primary"  href="{% url 'sendmail' %}">Buy Car</a>
+
+    </form>
+</div>
+{% endblock %}

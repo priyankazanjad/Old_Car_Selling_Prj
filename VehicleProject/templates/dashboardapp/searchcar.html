@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>add car</title>
+{% endblock %}
+{% block search %}
+<ul class="navbar-nav ml-auto ">
+        <form method="post" class="form-inline" style="margin-right:auto">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" name="searchdata" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success " type="submit">Search By Year</button>
+        </form>
+    </ul>
+{% endblock %}
+{% block content %}
+<div class="container" style="background-color:lightgray;margin-top:4%">
+    <h2 style="text-align:center;">List Car</h2>
+    <table class="table table-striped table-dark" style="width:90%;margin:auto">
+        <tr >
+            <th>ID</th>
+            <th>Seller name</th>
+            <th>Seller mobile</th>
+            <th>Make</th>
+            <th>Model name</th>
+            <th>Year</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+        {% for car in listcar %}
+        <tr>
+            <td>{{car.id}}</td>
+            <td>{{car.seller_name}}</td>
+            <td>{{car.seller_mobile}}</td>
+            <td>{{car.make}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.year}}</td>
+            <td>{{car.condition}}</td>
+            <td>{{car.price}}</td>
+            {% if car.is_buy == False %}
+          <td><a  href="{% url 'approve' car.id %}"><button class="btn btn-danger" style="margin-left:4.5%">buy</button></a></td>
+
+            {% else %}
+          <td style="color:red">sold</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
