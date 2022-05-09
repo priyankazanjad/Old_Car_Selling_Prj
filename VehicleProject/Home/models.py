@@ -1,10 +1,9 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 
 class Enquiry(models.Model):
 
     name = models.CharField(max_length=50)
-    mobile = PhoneNumberField(null=False,blank=False)
+    mobile = models.CharField(max_length=10)
 
-    def _str_(self):
+    def abcd(self):
         return f"{self.name},{self.mobile}"

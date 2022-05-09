@@ -8,5 +8,5 @@ class EnquiryModelForm(forms.ModelForm):
 
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Enter Buyer Name'}),
-            'mobile': forms.TextInput(attrs={'placeholder': 'eg. +12897654326'}),
+            'mobile': forms.TextInput(attrs={'placeholder': '2897654326'}),
         }
